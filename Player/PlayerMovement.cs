@@ -94,7 +94,6 @@ public class PlayerMovement : MonoBehaviour
             hpText.text = hp.ToString();
 
             MyInput();
-            HandleRotation();
         }
     }
 
@@ -152,18 +151,6 @@ public class PlayerMovement : MonoBehaviour
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
-    }
-
-    private void HandleRotation()
-    {
-        float mouseX = Input.GetAxis("Mouse X") * 10f * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * 10f * Time.deltaTime;
-
-        Vector3 rotation = transform.localRotation.eulerAngles;
-        float desiredYAngle = rotation.y + mouseX;
-        float desiredXAngle = rotation.x - mouseY;
-
-        transform.localRotation = Quaternion.Euler(desiredXAngle, desiredYAngle, 0);
     }
 
     private void MovePlayer()
